@@ -1,5 +1,5 @@
-> # Notebook
-> A language for easily creating beautiful documents, mainly study notes.
+# Notebook
+A language for easily creating beautiful documents, mainly study notes.
 
 
 ## Install / Uninstall
