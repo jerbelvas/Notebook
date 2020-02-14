@@ -1,6 +1,10 @@
 # Notebook
 A language for easily creating beautiful documents, mainly study notes.
 
+![Preview 1](preview1.png)
+![Preview 2](preview3.png)
+![Preview 3](preview3.png)
+
 
 ## Install / Uninstall
 - To install the 'notebook' command, run install.sh
