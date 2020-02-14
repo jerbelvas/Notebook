@@ -1,0 +1,103 @@
+body {
+    margin: 60px;
+    background-color: rgb(255, 254, 251);
+    font-family: 'CMU Sans Serif';
+    font-size: 130%;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: center;
+    padding: 0 8px;
+    border: rgb(62, 49, 150) 2px solid;
+}
+
+th {
+    font-weight: bold;
+}
+
+ul {
+    margin-block-start: 6px;
+    margin-block-end: 6px;
+    list-style: none; /* Remove default bullets */
+}
+  
+ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: rgb(80, 63, 185); /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1.5em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.h0 {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 50px;
+
+    color: rgb(80, 63, 185);
+    font-family: 'CMU Sans Serif';
+    border-top: rgb(155, 155, 155) 3px solid;
+    border-bottom: rgb(155, 155, 155) 2px solid;
+    padding: 5px 10px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: rgb(80, 63, 185);
+    font-family: 'CMU Sans Serif';
+    background-color: rgb(243, 243, 243);
+    border-top: rgb(155, 155, 155) 3px solid;
+    border-bottom: rgb(155, 155, 155) 2px solid;
+    padding: 5px 10px;
+}
+
+.main-text {
+    margin-left: 270px;
+
+    border-color: rgb(72, 133, 245);
+    border-width: 1px;
+    border-left-style: dashed;
+
+    padding-left: 80px;
+    padding-right: 40px;
+}
+
+.box {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: rgba(0, 0, 0, 0.2) 2px solid;
+}
+
+.annotation {
+    background-color: #ddfffc;
+    border-left: turquoise 2px solid;
+    float: left;
+    margin: 0 -380px;
+    max-width: 240px;
+    font-size: 95%;
+}
+
+.definition {
+    background-color: #e7fff3;
+    border-left: #2fcebe 2px solid;
+}
+
+.example {
+    background-color: #fef2f1;
+    border-left: #b1a8a6 2px solid;
+}
+
+.theorem {
+    background-color: #f3ecf3;
+    border-left: #966996 2px solid;
+}
+
+.proof {
+    background-color: #f2f2f2;
+    border-left: #939393 2px solid;
+}
