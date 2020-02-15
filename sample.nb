@@ -3,14 +3,24 @@
 ## 3 &nbsp; Séries de Taylor
 
 
-#### Índice
+#### Índice com lista não ordenada
 - **Séries de Taylor**
     - Definição
     - Exemplo
     - Teorema de Taylor
         - *Prova*
-        - Implementação em C++ de \code{{sin(x)}}<br>A vida vale muito mais que mil palavras
+        - Implementação em C++ de \code{{sin(x)}}
 - **Curiosidades**
+
+
+#### Índice com lista ordenada
+1. **Séries de Taylor**
+    1.1. Definição
+    1.2. Exemplo
+    1.3. Teorema de Taylor
+        1.3.1. *Prova*
+        1.3.2. Implementação em C++ de \code{{sin(x)}}
+2. **Curiosidades**
 
 
 \note{{Se a série de Taylor for centrada em $0$, também lhe chamamos **série de Maclaurin**.}}
@@ -22,7 +32,7 @@ Uma função pode ser aproximada usando um número finito de termos da sua séri
 
 
 \note{{Uma função pode não ser igual à sua série de Taylor, mesmo que a série convirja em todos os pontos.}}
-O polinómio formado por tomar os termos iniciais da série de Taylor é chamado de **polinómio de Taylor**. A série de Taylor de uma função é o limite do polinómio de Taylor da função quando o seu grau tende para infinito (desde que o limite exista).
+O polinómio formado por tomar os termos iniciais da série de Taylor é chamado de **_polinómio de Taylor_**. A série de Taylor de uma função é o limite do polinómio de Taylor da função quando o seu grau tende para infinito (desde que o limite exista).
 
 
 \center{{

@@ -36,6 +36,7 @@ void init_tags() {
     tag_string[TAG_IMG] = "\\img{{";
     tag_string[TAG_CENTER] = "\\center{{";
     tag_string[TAG_UL] = "- ";
+    tag_string[TAG_OL] = "- "; // NOTE: The ol tag will not be matched with this string, but this still has to be defined as a not empty string, otherwise it would always match and cause an infinite loop with every token; is defined as the previous one because if the previous one matches, then this gets skipped
 }
 
 
@@ -45,12 +46,35 @@ bool check_tag(string s, int pos, tag t) {
 }
 
 
-// Check if a line corresponds to a ul tag, ie. starts with '-' (ignoring preceding spaces/tabs)
+// Check if a line corresponds to a ul tag, ie. starts with "- " (ignoring preceding spaces/tabs)
 bool check_tag_ul(string s) {
     stringstream ss(s);
     string l;
     ss >> l;
     return l == "-";
+}
+
+
+// Check if a line corresponds to a ol tag, ie. starts with "1. " or any other non-negative integer (it can also be something like "0.1.7. ") (ignoring preceding spaces/tabs)
+bool check_tag_ol(string s) {
+    stringstream ss(s);
+    string l;
+    ss >> l;
+
+    bool valid = true;
+    for (size_t i = 0; i < l.size()-1; i++)
+        if (!isdigit(l[i]) && l[i] != '.') valid = false;
+    
+    return (valid && l[l.size()-1] == '.');
+}
+
+
+// Check if a string is empty or only consists of spaces, tabs, etc.
+bool string_is_empty(string s) {
+    stringstream ss(s);
+    string l;
+    ss >> l;
+    return l == "";
 }
 
 
@@ -81,15 +105,6 @@ void print_html_tag(tag t, ofstream &file_html_output) {
         case TAG_CENTER: file_html_output << "<center>"; break;
         default:;
     }
-}
-
-
-// Check if a string is empty or only consists of spaces, tabs, etc.
-bool string_is_empty(string s) {
-    stringstream ss(s);
-    string l;
-    ss >> l;
-    return l == "";
 }
 
 
@@ -133,6 +148,22 @@ void parse(string path_program, string path_html_template, string path_html_outp
                     file_html_output << "<ul style='margin-inline-start: " << tabs*50 << "px;'><li>";
 
                     st.push(TAG_UL);
+                }
+                // Check if the line starts with the ol tag
+                else if (check_tag_ol(line)) {
+                    // Count the number of tabs before the number part so the proper indentation can be given to the list item (number of tabs * 50px)
+                    int tabs = 0;
+                    for (int j = 0; j+4 <= (int)line.size() && line.substr(j, 4) == "    "; tabs++, j+=4);
+                    
+                    // Find the number to render on the ol tag (eg. "1. ")
+                    stringstream ss(line);
+                    string number_part;
+                    ss >> number_part;
+                    getline(ss, line);
+                    
+                    file_html_output << "<div class='ol'  style='margin-inline-start: " << tabs*50 << "px;'><span class='ol-number'>" << number_part << "&nbsp;</span>";
+
+                    st.push(TAG_OL);
                 }
                 
                 size_t i = 0;
@@ -213,7 +244,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                 }
 
                 // At the end of the line, check if there are header tags to close (eg. ## header has to be closed in HTML: <h1> header</h1>)
-                while (!st.empty() && ((TAG_H6 <= st.top() && st.top() <= TAG_H0) || st.top() == TAG_UL)) {
+                while (!st.empty() && ((TAG_H6 <= st.top() && st.top() <= TAG_H0) || st.top() == TAG_UL || st.top() == TAG_OL)) {
                     switch (st.top()) {
                         case TAG_H6: file_html_output << "</h6>"; break;
                         case TAG_H5: file_html_output << "</h5>"; break;
@@ -223,6 +254,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                         case TAG_H1: file_html_output << "</h1>"; break;
                         case TAG_H0: file_html_output << "</div></center>"; break;
                         case TAG_UL: file_html_output << "</li></ul>"; break;
+                        case TAG_OL: file_html_output << "</div>"; break;
                         default:;
                     }
                     st.pop();

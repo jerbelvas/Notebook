@@ -53,13 +53,15 @@ A language for easily creating beautiful documents, mainly study notes.
 - Two lines separated by three `\n` are rendered one after another with a blank space in-between.
 
 
-#### Lists (unordered)
+#### Lists
+
+##### Unordered lists
 ```
 - Item 1
 - Item 2
-[4 spaces]- Item 2a (tab before '-')
+[4 spaces]- Item 2a
 [4 spaces]- Item 2b
-[4 spaces][4 spaces]- Item 2a.1
+[4 spaces][4 spaces]- Item 2b.1
 - Item 3
 ```
 
@@ -67,10 +69,29 @@ is rendered as:
 
 - Item 1
 - Item 2
-	- Item 2a (tab before '-')
+	- Item 2a
 	- Item 2b
 		- Item 2a.1
 - Item 3
+
+##### Ordered lists
+```
+1. Item 1
+2. Item 2
+[4 spaces]2.1. Item 2.1
+[4 spaces]2.2. Item 2.2
+[4 spaces][4 spaces]2.2.1. Item 2.2.1
+3. Item 3
+```
+
+is rendered as:
+
+1. Item 1
+2. Item 2
+	2.1. Item 2.1
+	2.2. Item 2.2
+		2.2.1. Item 2.2.1
+3. Item 3
 
 #### Margin notes
 `\note{{This is a margin note. This tag should textually come before the element we want it to visually be rendered on the side of}}`

@@ -12,7 +12,7 @@ using namespace std;
 #define NTAGS 50
 
 // Define the tags enumertation according to their order of precedence (eg. h2 must come before h1, since a match with ### must be found before a match with ## is, otherwise the shortest common prefixes would always match)
-typedef enum {TAG_START, TAG_H6, TAG_H5, TAG_H4, TAG_H3, TAG_H2, TAG_H1, TAG_H0, TAG_BOLD_ITALIC, TAG_BOLD, TAG_ITALIC, TAG_U, TAG_CLOSE, TAG_NOTE, TAG_DEF, TAG_EXAMPLE, TAG_THEOREM, TAG_PROOF, TAG_CODE_INLINE, TAG_CODE_BLOCK, TAG_LATEX_MULTILINE, TAG_LATEX_INLINE, TAG_IMG, TAG_CENTER, TAG_UL, TAG_END} tag;
+typedef enum {TAG_START, TAG_H6, TAG_H5, TAG_H4, TAG_H3, TAG_H2, TAG_H1, TAG_H0, TAG_BOLD_ITALIC, TAG_BOLD, TAG_ITALIC, TAG_U, TAG_CLOSE, TAG_NOTE, TAG_DEF, TAG_EXAMPLE, TAG_THEOREM, TAG_PROOF, TAG_CODE_INLINE, TAG_CODE_BLOCK, TAG_LATEX_MULTILINE, TAG_LATEX_INLINE, TAG_IMG, TAG_CENTER, TAG_UL, TAG_OL, TAG_END} tag;
 
 
 // Initialize the tags with the corresponding string for each tag id
@@ -27,12 +27,16 @@ bool check_tag(string s, int pos, tag t);
 bool check_tag_ul(string s);
 
 
-// Print the HTML equivalent of a tag
-void print_html_tag(tag t, ofstream &file_html_output);
+// Check if a line corresponds to a ol tag, ie. starts with "1. " or any other non-negative integer (it can also be something like "0.1.7. ") (ignoring preceding spaces/tabs)
+bool check_tag_ol(string s);
 
 
 // Check if a string is empty or only consists of spaces, tabs, etc.
 bool string_is_empty(string s);
+
+
+// Print the HTML equivalent of a tag
+void print_html_tag(tag t, ofstream &file_html_output);
 
 
 // Parser entry point

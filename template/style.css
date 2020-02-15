@@ -34,6 +34,19 @@ ul li::before {
     margin-left: -1em; /* Also needed for space (tweak if needed) */
 }
 
+.ol {
+    margin-block-start: 6px;
+    margin-block-end: 6px;
+    padding-inline-start: 20px;
+}
+
+.ol-number {
+    color: rgb(80, 63, 185);
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 .h0 {
     font-size: 2.5em;
     font-weight: bold;
