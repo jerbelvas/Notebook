@@ -28,7 +28,7 @@ A language for easily creating beautiful documents, mainly study notes.
 ### Source file syntax
 
 #### Headers
-`# This is an <h0> tag` (larger than &lt;h1&gt;, used for main titles)
+`# This is an <h0> tag` (larger than `<h1>`, used for main titles)
 
 `## This is an <h1> tag`
 
@@ -46,18 +46,20 @@ A language for easily creating beautiful documents, mainly study notes.
 `\u{{This will be underlined}}`
 
 #### Line breaks
-Two lines separated by `\n` are rendered as one.
-Two lines separated by two `\n` are rendered one after another.
-Two lines separated by three `\n` are rendered one after another with a blank space in-between.
+- Two lines separated by `\n` are rendered as one.
+
+- Two lines separated by two `\n` are rendered one after another.
+
+- Two lines separated by three `\n` are rendered one after another with a blank space in-between.
 
 
 #### Lists (unordered)
 ```
 - Item 1
 - Item 2
-[4 spaces] - Item 2a (tab before '-')
-[4 spaces] - Item 2b
-[4 spaces][4 spaces] - Item 2a.1
+[4 spaces]- Item 2a (tab before '-')
+[4 spaces]- Item 2b
+[4 spaces][4 spaces]- Item 2a.1
 - Item 3
 ```
 
@@ -83,7 +85,7 @@ is rendered as:
 `\theorem{{This is a theorem}}`
 
 #### Proofs
-`\proof{{This is a proof for a theorem}}`
+`\proof{{This is the proof for a theorem}}`
 
 #### In-line code
 `\code{{int f(int x);}}`
@@ -91,7 +93,7 @@ is rendered as:
 #### Multi-line code
 ```c++
 \codeblock{{int f(int x) {
-	return x+1;
+    return x+1;
 }
 }}
 ```
