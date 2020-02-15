@@ -52,12 +52,23 @@ Two lines separated by three `\\n` are rendered one after another with a blank s
 
 
 #### Lists (unordered)
+```
 \- Item 1
 \- Item 2
-	\- Item 2a (tab before '-')
-	\- Item 2b
-		\- Item 2a.1
+[TAB] \- Item 2a (tab before '-')
+[TAB] \- Item 2b
+[TAB][TAB] \- Item 2a.1
 \- Item 3
+```
+
+is rendered as:
+
+- Item 1
+- Item 2
+	- Item 2a (tab before '-')
+	- Item 2b
+		- Item 2a.1
+- Item 3
 
 #### Margin notes
 `\\note{{This is a margin note. This tag should textually come before the element we want it to visually be rendered on the side of}}`
@@ -93,8 +104,11 @@ Two lines separated by three `\\n` are rendered one after another with a blank s
 
 #### Images
 `\\img{{src="images/image.png"}}`
+
 `\\img{{src="images/image.png" width=200}}`
+
 `\\img{{src="images/image.png" height=100}}`
+
 `\\img{{src="images/image.png" width=200 height=100}}`
 
 #### Manually center elements
