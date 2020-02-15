@@ -84,15 +84,6 @@ is rendered as:
 3. Item 3
 ```
 
-is rendered as:
-
-1. Item 1
-2. Item 2
-	2.1. Item 2.1
-	2.2. Item 2.2
-		2.2.1. Item 2.2.1
-3. Item 3
-
 #### Margin notes
 `\note{{This is a margin note. This tag should textually come before the element we want it to visually be rendered on the side of}}`
 
