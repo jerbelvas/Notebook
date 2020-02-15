@@ -22,7 +22,7 @@ void init_tags() {
     tag_string[TAG_BOLD_ITALIC] = "***";
     tag_string[TAG_BOLD] = "**";
     tag_string[TAG_ITALIC] = "*";
-    tag_string[TAG_U] = "\\u{{";
+    tag_string[TAG_U] = "_";
     tag_string[TAG_NOTE] = "\\note{{";
     tag_string[TAG_DEF] = "\\def{{";
     tag_string[TAG_EXAMPLE] = "\\example{{";
@@ -168,10 +168,14 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                     file_html_output << "</em>";
                                     st.pop();
                                 }
+                                // Underline tag
+                                else if (t == TAG_U && !st.empty() && st.top() == TAG_U) {
+                                    file_html_output << "</u>";
+                                    st.pop();
+                                }
                                 // Close tag: use the appropriate HTML closing tag for each case
                                 else if (t == TAG_CLOSE && !st.empty()) {
                                     switch (st.top()) {
-                                        case TAG_U: file_html_output << "</u>"; break;
                                         case TAG_NOTE: case TAG_DEF: case TAG_EXAMPLE: case TAG_THEOREM: case TAG_PROOF: file_html_output << "</div>"; break;
                                         case TAG_CODE_INLINE: file_html_output << "</code>"; break;
                                         case TAG_CODE_BLOCK: file_html_output << "</code></pre>"; break;
@@ -181,7 +185,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                     }
                                     st.pop();
                                 }
-                                // When a tag has an (almost) direct equivalent in HTML (eg. \u{text} gets converted to <u>text</u>)
+                                // When a tag has an (almost) direct equivalent in HTML (eg. \center{{text}} gets converted to <center>text</center>)
                                 else {
                                     print_html_tag(t, file_html_output);
                                     st.push(t);

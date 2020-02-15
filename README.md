@@ -43,7 +43,7 @@ A language for easily creating beautiful documents, mainly study notes.
 
 `***This will be bold & italic***`
 
-`\u{{This will be underlined}}`
+`_This will be underlined_`
 
 #### Line breaks
 - Two lines separated by `\n` are rendered as one.
