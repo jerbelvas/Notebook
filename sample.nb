@@ -1,0 +1,125 @@
+# Cálculo
+
+## 3 &nbsp; Séries de Taylor
+
+
+#### Índice
+- **Séries de Taylor**
+    - Definição
+    - Exemplo
+    - Teorema de Taylor
+        - *Prova*
+        - Implementação em C++ de \code{{sin(x)}}<br>A vida vale muito mais que mil palavras
+- **Curiosidades**
+
+
+\note{{Se a série de Taylor for centrada em $0$, também lhe chamamos **série de Maclaurin**.}}
+\def{{
+    Uma **série de Taylor** é uma aproximação de uma função como uma soma infinita de termos que são calculados a partir dos valores das suas derivadas num único ponto.
+}}
+
+Uma função pode ser aproximada usando um número finito de termos da sua série de Taylor. O **Teorema de Taylor** indica estimativas quantitativas do erro introduzido pelo uso de tais aproximações.
+
+
+\note{{Uma função pode não ser igual à sua série de Taylor, mesmo que a série convirja em todos os pontos.}}
+O polinómio formado por tomar os termos iniciais da série de Taylor é chamado de **polinómio de Taylor**. A série de Taylor de uma função é o limite do polinómio de Taylor da função quando o seu grau tende para infinito (desde que o limite exista).
+
+
+\center{{
+    \img{{src=images/Expanimation.gif width=400}}
+}}
+
+
+\def{{
+    A **série de Taylor** de uma função real/complexa $f$ que é infinitamente diferenciável num número real/complexo $a$ é dada por:
+    $$f(a) + \frac{f^\prime(a)}{1!}(x-a) + \frac{f^{\prime\prime}(a)}{2!}(x-a)^2 + \cdots$$
+    ou seja,
+    $$\sum_{n=0}^\infty{\frac{f^{(n)}(a)}{n!}(x-a)^n}$$
+}}
+
+\example{{
+    A série de Taylor de um polinómio é o próprio polinómio.
+
+
+    A série de Maclaurin para $\frac{1}{1-x}$ é a série geométrica $1+x+x^2+x^3+\dots$.
+
+    Portanto, a série de Taylor para $\frac{1}{x}$ em $a=1$ é $1 - (x-1) + (x-1)^2 - (x-1)^3 + \cdots$.
+}}
+
+
+Esta tabela não tem nada a ver, mas mostra que também são suportadas tabelas:
+$$
+\begin{array}{|c|c|c|}
+\hline
+  \text{Conjunto} & \text{Operação} & \text{Identidade} \\ 
+\hline
+   \mathbb{Z} & + & 0 \\
+\hline
+   \mathbb{Q} & + & 0 \\
+\hline
+   \mathbb{R} & + & 0 \\ 
+\hline
+   \mathbb{Z} & \times & 1 \\
+\hline
+   \mathbb{Q} & \times & 1 \\
+\hline
+   \mathbb{R} & \times & 1 \\ 
+\hline
+\end{array}
+$$
+
+\center{{
+<table>
+    <tr>
+        <th>Conjunto</th>
+        <th>Operação</th>
+        <th>Identidade</th>
+    </tr>
+    <tr>
+        <td>$\mathbb{Z}$</td>
+        <td>$+$</td>
+        <td>$0$</td>
+    </tr>
+    <tr>
+        <td>$\mathbb{Q}$</td>
+        <td>$-$</td>
+        <td>$0$</td>
+    </tr>
+    <tr>
+        <td>$\mathbb{R}$</td>
+        <td>$\times$</td>
+        <td>$1$</td>
+    </tr>
+</table>
+}}
+
+<p>E anotações de HTML também funcionam!</p>
+
+
+### 3.1 &nbsp; Teorema de Taylor
+\theorem{{
+    Seja $k \ge 1$ um inteiro e seja $f : \mathbb{R} \to \mathbb{R}$ uma função $k$ vezes derivável no ponto $a \in \mathbb{R}$. Então, existe uma função $h_k : \mathbb{R} \to \mathbb{R}$ tal que
+    $$f(x) = f(a) + f^\prime(a)(x-a) + \frac{f^{\prime\prime}}{2!}(x-a)^2 + \cdots$$
+    e $\lim_{x \to a}{h_k(x)} = 0$.
+
+
+    Este polinómio é o **polinómio de Taylor de ordem $k$**.
+}}
+\proof{{
+    A prova está no livro.
+}}
+
+
+\note{{Não é a implementação mais eficiente, mas serve como exemplo.}}
+#### Implementação em C++: cálculo do seno com série de Taylor
+\codeblock{{double sin(double angle) {
+    double a, b, c, res = 0;
+    for (int y = 0; y < 9; y++) {
+        a = power(-1, y);
+        b = power(angle, 2*y+1);
+        c = factorial(2*y+1);
+        res += (a*b)/c;
+    }
+    return res;
+}
+}}
