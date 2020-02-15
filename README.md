@@ -119,15 +119,15 @@ We can also use any HTML tags, for instance, to make a table:
 
 ```html
 <table>
-	<tr>
-		<td>Header 1</td>
-		<td>Header 2</td>
-		<td>Header 3</td>
-	</tr>
-	<tr>
-		<td>Item 1</td>
-		<td>Item 2</td>
-		<td>Item 3</td>
-	</tr>
+    <tr>
+        <td>Header 1</td>
+        <td>Header 2</td>
+        <td>Header 3</td>
+    </tr>
+    <tr>
+        <td>Item 1</td>
+        <td>Item 2</td>
+        <td>Item 3</td>
+    </tr>
 </table>
 ```
