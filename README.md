@@ -28,72 +28,87 @@ A language for easily creating beautiful documents, mainly study notes.
 ### Source file syntax
 
 #### Headers
-\# This is an <h0> tag (larger than <h1>, used for main titles)
-\#\# This is an <h1> tag
+`\# This is an &lt;h0&gt; tag` (larger than &lt;h1&gt;, used for main titles)
+
+`\#\# This is an &lt;h1&gt; tag`
+
 ...
-\#\#\#\#\#\#\# This is an <h6> tag
+
+`\#\#\#\#\#\#\# This is an &lt;h6&gt; tag`
 
 #### Text styling
-* \*This will be italic\* *
-** \*\* This will be italic \*\* **
-*** \*\*\* This will be bold & italic \*\*\* ***
-\u{{This will be underlined}}
+`*\*This will be italic\* *`
+
+`** \*\* This will be italic \*\* **`
+
+`*** \*\*\* This will be bold & italic \*\*\* ***`
+
+`\u{{This will be underlined}}`
+
+#### Line breaks
+Two lines separated by `\\n` are rendered as one.
+Two lines separated by two `\\n` are rendered one after another.
+Two lines separated by three `\\n` are rendered one after another with a blank space in-between.
+
 
 #### Lists (unordered)
-- Item 1
-- Item 2
-	- Item 2a (tab before '-')
-	- Item 2b
-		- Item 2a.1
-- Item 3
+\- Item 1
+\- Item 2
+	\- Item 2a (tab before '-')
+	\- Item 2b
+		\- Item 2a.1
+\- Item 3
 
 #### Margin notes
-\\note{{This is a margin note. This tag should textually come before the element we want it to visually be rendered on the side of}}
+`\\note{{This is a margin note. This tag should textually come before the element we want it to visually be rendered on the side of}}`
 
 #### Definitions
-\\def{{This is a definition}}
+`\\def{{This is a definition}}`
 
 #### Example
-\\example{{This is an example}}
+`\\example{{This is an example}}`
 
 #### Theorems
-\\theorem{{This is a theorem}}
+`\\theorem{{This is a theorem}}`
 
 #### Proofs
-\\proof{{This is a proof for a theorem}}
+`\\proof{{This is a proof for a theorem}}`
 
 #### In-line code
-\\code{{int f(int x);}}
+`\\code{{int f(int x);}}`
 
 #### Multi-line code
+```c++
 \\codeblock{{int f(int x) {
 	return x+1;
 }
 }}
+```
 
 #### In-line LaTeX
-$f(x) = x+1$
+`$f(x) = x+1$`
 
 #### Multi-line (centered) LaTeX
-$$f(x) = x+1$$
+`$$f(x) = x+1$$`
 
 #### Images
-\\img{{src="images/image.png"}}
-\\img{{src="images/image.png" width=200}}
-\\img{{src="images/image.png" height=100}}
-\\img{{src="images/image.png" width=200 height=100}}
+`\\img{{src="images/image.png"}}`
+`\\img{{src="images/image.png" width=200}}`
+`\\img{{src="images/image.png" height=100}}`
+`\\img{{src="images/image.png" width=200 height=100}}`
 
 #### Manually center elements
-\\center{{This text will appear as centered}}
+`\\center{{This text will appear as centered}}`
 
 #### HTML tags
 We can also use any HTML tags, for instance, to make a table:
 
+```html
 <table>
 	<tr>
-		<td>Item 1</td>
-		<td>Item 2</td>
-		<td>Item 3</td>
+		<td>Header 1</td>
+		<td>Header 2</td>
+		<td>Header 3</td>
 	</tr>
 	<tr>
 		<td>Item 1</td>
@@ -101,3 +116,4 @@ We can also use any HTML tags, for instance, to make a table:
 		<td>Item 3</td>
 	</tr>
 </table>
+```
