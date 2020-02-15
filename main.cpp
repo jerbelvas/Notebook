@@ -15,5 +15,5 @@ int main(int argc, char** argv) {
     string path_program(argv[1]);
     string path_html_template(argv[2]);
     string path_html_output(argv[3]);
-    parse(path_program, path_html_template, path_html_output); // TODO: adicionar 3º argumento
+    parse(path_program, path_html_template, path_html_output);
 }
