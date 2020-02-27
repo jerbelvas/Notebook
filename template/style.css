@@ -17,6 +17,7 @@ td, th {
 
 th {
     font-weight: bold;
+    color: rgb(80, 63, 185);
 }
 
 ul {
@@ -113,4 +114,12 @@ h1,h2,h3,h4,h5,h6 {
 .proof {
     background-color: #f2f2f2;
     border-left: #939393 2px solid;
+}
+
+.check {
+    color: rgb(28, 163, 28);
+}
+
+.blue {
+    color: rgb(80, 63, 185);
 }

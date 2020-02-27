@@ -37,6 +37,8 @@ void init_tags() {
     tag_string[TAG_CENTER] = "\\center{{";
     tag_string[TAG_UL] = "- ";
     tag_string[TAG_OL] = "- "; // NOTE: The ol tag will not be matched with this string, but this still has to be defined as a not empty string, otherwise it would always match and cause an infinite loop with every token; is defined as the previous one because if the previous one matches, then this gets skipped
+    tag_string[TAG_CHECK] = "\\check";
+    tag_string[TAG_BLUE] = "\\blue{{";
 }
 
 
@@ -103,6 +105,8 @@ void print_html_tag(tag t, ofstream &file_html_output) {
         case TAG_LATEX_INLINE: file_html_output << "$"; break;
         case TAG_IMG: file_html_output << "<img "; break;
         case TAG_CENTER: file_html_output << "<center>"; break;
+        case TAG_CHECK: file_html_output << "<span class='check'>✓</span>"; break;
+        case TAG_BLUE: file_html_output << "<span class='blue'>"; break;
         default:;
     }
 }
@@ -212,6 +216,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                         case TAG_CODE_BLOCK: file_html_output << "</code></pre>"; break;
                                         case TAG_IMG: file_html_output << ">"; break;
                                         case TAG_CENTER: file_html_output << "</center>"; break;
+                                        case TAG_BLUE: file_html_output << "</span>"; break;
                                         default:;
                                     }
                                     st.pop();
