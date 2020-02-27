@@ -224,7 +224,8 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                 // When a tag has an (almost) direct equivalent in HTML (eg. \center{{text}} gets converted to <center>text</center>)
                                 else {
                                     print_html_tag(t, file_html_output);
-                                    st.push(t);
+                                    if (t != TAG_CHECK) // Don't add not-enclosable tags to the stack
+                                        st.push(t);
                                 }
                                 // Advance the parser cursor by the size of the matched tag
                                 i += tag_string[t].size();
