@@ -145,3 +145,11 @@ We can also use any HTML tags, for instance, to make a table:
     </tr>
 </table>
 ```
+
+#### Checkmark
+Sometimes it is useful to quickly write a green checkmark, like ✓.
+We can do this using the tag `\check`.
+
+#### Blue text
+It is often nice to highlight some text in blue quickly.
+For this we wrap the text in `\blue{{text}}`.
