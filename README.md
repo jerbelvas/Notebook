@@ -99,6 +99,9 @@ is rendered as:
 #### Proofs
 `\proof{{This is the proof for a theorem}}`
 
+#### Quotes
+`\quote{{This is a quote}}`
+
 #### In-line code
 `\code{{int f(int x);}}`
 

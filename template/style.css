@@ -107,11 +107,16 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .theorem {
-    background-color: #f3ecf3;
+    background-color: #f8e5f8;
     border-left: #966996 2px solid;
 }
 
 .proof {
+    background-color: #f2fce9;
+    border-left: #94b46f 2px solid;
+}
+
+.quote {
     background-color: #f2f2f2;
     border-left: #939393 2px solid;
 }

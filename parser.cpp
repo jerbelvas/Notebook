@@ -28,6 +28,7 @@ void init_tags() {
     tag_string[TAG_EXAMPLE] = "\\example{{";
     tag_string[TAG_THEOREM] = "\\theorem{{";
     tag_string[TAG_PROOF] = "\\proof{{";
+    tag_string[TAG_QUOTE] = "\\quote{{";
     tag_string[TAG_CODE_INLINE] = "\\code{{";
     tag_string[TAG_CODE_BLOCK] = "\\codeblock{{";
     tag_string[TAG_CLOSE] = "}}";
@@ -99,6 +100,7 @@ void print_html_tag(tag t, ofstream &file_html_output) {
         case TAG_EXAMPLE: file_html_output << "<div class='box example'><div style=\"padding-bottom: 5px; font-size: 1.05em; font-family: 'CMU Sans Serif'; color: #9e654f;\"><b>Exemplo</b></div>"; break;
         case TAG_THEOREM: file_html_output << "<div class='box theorem'><div style=\"padding-bottom: 5px; font-size: 1.05em; font-family: 'CMU Sans Serif'; color: #34367e;\"><b>Teorema</b></div>"; break;
         case TAG_PROOF: file_html_output << "<div class='box proof'><div style=\"padding-bottom: 5px; font-size: 1.05em; font-family: 'CMU Sans Serif'; font-style: italic;\"><b>Prova</b></div>"; break;
+        case TAG_QUOTE: file_html_output << "<div class='box quote'>"; break;
         case TAG_CODE_INLINE: file_html_output << "<code class='language-cpp'>"; break;
         case TAG_CODE_BLOCK: file_html_output << "<pre><code class='language-cpp'>"; break;
         case TAG_LATEX_MULTILINE: file_html_output << "$$"; break;
@@ -211,7 +213,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                 // Close tag: use the appropriate HTML closing tag for each case
                                 else if (t == TAG_CLOSE && !st.empty()) {
                                     switch (st.top()) {
-                                        case TAG_NOTE: case TAG_DEF: case TAG_EXAMPLE: case TAG_THEOREM: case TAG_PROOF: file_html_output << "</div>"; break;
+                                        case TAG_NOTE: case TAG_DEF: case TAG_EXAMPLE: case TAG_THEOREM: case TAG_PROOF: case TAG_QUOTE: file_html_output << "</div>"; break;
                                         case TAG_CODE_INLINE: file_html_output << "</code>"; break;
                                         case TAG_CODE_BLOCK: file_html_output << "</code></pre>"; break;
                                         case TAG_IMG: file_html_output << ">"; break;
