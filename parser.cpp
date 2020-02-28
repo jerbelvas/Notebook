@@ -40,6 +40,7 @@ void init_tags() {
     tag_string[TAG_OL] = "- "; // NOTE: The ol tag will not be matched with this string, but this still has to be defined as a not empty string, otherwise it would always match and cause an infinite loop with every token; is defined as the previous one because if the previous one matches, then this gets skipped
     tag_string[TAG_CHECK] = "\\check";
     tag_string[TAG_BLUE] = "\\blue{{";
+    tag_string[TAG_QED] = "\\qed";
 }
 
 
@@ -109,6 +110,7 @@ void print_html_tag(tag t, ofstream &file_html_output) {
         case TAG_CENTER: file_html_output << "<center>"; break;
         case TAG_CHECK: file_html_output << "<span class='check'>✓</span>"; break;
         case TAG_BLUE: file_html_output << "<span class='blue'>"; break;
+        case TAG_QED: file_html_output << "<div class='qed'>□</div>"; break;
         default:;
     }
 }
@@ -226,7 +228,7 @@ void parse(string path_program, string path_html_template, string path_html_outp
                                 // When a tag has an (almost) direct equivalent in HTML (eg. \center{{text}} gets converted to <center>text</center>)
                                 else {
                                     print_html_tag(t, file_html_output);
-                                    if (t != TAG_CHECK) // Don't add not-enclosable tags to the stack
+                                    if (t != TAG_CHECK && t != TAG_QED) // Don't add not-enclosable tags to the stack
                                         st.push(t);
                                 }
                                 // Advance the parser cursor by the size of the matched tag

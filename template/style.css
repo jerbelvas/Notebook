@@ -128,3 +128,7 @@ h1,h2,h3,h4,h5,h6 {
 .blue {
     color: rgb(80, 63, 185);
 }
+
+.qed {
+    float: right;
+}
