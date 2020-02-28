@@ -96,8 +96,10 @@ is rendered as:
 #### Theorems
 `\theorem{{This is a theorem}}`
 
-#### Proofs
-`\proof{{This is the proof for a theorem}}`
+#### Proofs (with QED symbol)
+`\proof{{This is the proof for a theorem`
+`\qed`
+`}}`
 
 #### Quotes
 `\quote{{This is a quote}}`
